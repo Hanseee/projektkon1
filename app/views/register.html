@@ -46,8 +46,8 @@
 				<h1>Rejestracja</h1>
 				<p class="lead">
 					Tutaj utworzysz nowe konto
-				</p>
-				<p class="small text-muted">Strona dopilnuje, żebyś nie oszukiwał</p>
+                                </p>
+                                <p class="small text-muted">Hasło musi mieć minimum 6 i maksimum 20 znaków</p>
 			</div>
 		</div>
 	</div>
@@ -60,27 +60,45 @@
                <p class="lead">Tutaj dane:</p>
 		<div class="featurelist text-center space-after">
                     <form class="form-inline" role="form">
-                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" id="name" placeholder="Nazwa użytkownika"></div><br>  
-					<div class="form-group space-after"><input type="text" class="form-control input-lg" id="pass" placeholder="Hasło"></div><br>  
-                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" id="pass2" placeholder="Powtórz hasło"></div><br>  
+                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" name="login" id="id_login" placeholder="Nazwa użytkownika"></div><br>  
+					<div class="form-group space-after"><input type="password" class="form-control input-lg" name="pass" id="id_pass" placeholder="Hasło"></div><br>  
+                                        <div class="form-group space-after"><input type="password" class="form-control input-lg" name="pass2" id="id_pass2" placeholder="Powtórz hasło"></div><br>  
                                         <div class="form-group space-after">
-                                            <p>Rola:</p>
-                                            <input type="radio" id="reg1" name="role" value="user"><label for="reg1" title="Użytkownik może przeglądać firmy ale nie może tworzyć własnych."> Użytkownik </label>
-                                            <input type="radio" id="reg2" name="role" value="owner"><label for="reg2" title="Właściciel może przeglądać firmy oraz tworzyć własne, publiczne lub prywatne. Utworzenie konta właściciela wiąże się z opłatami."> Właściciel </label>
-                                        </div><br>
+                                                <label for="cars">Rola:</label><br>
+                                                <select name="role" id="role">
+                                                    <option value="user"> &nbsp; Użytkownik &nbsp; </option>
+                                                    <option value="owner"> &nbsp; Właściciel &nbsp; </option>
+                                                </select>
+                                        </div>
                                         <div class="form-group">
-                                            <p>Czy akceptujesz regulamin?:</p>
-                                            <input type="radio" id="reg1" name="reg" value="tak"><label for="reg1" title="Od przystąpienia do umowy nie ma odwrotu"> tak </label>
-                                            <input type="radio" id="reg2" name="reg" value="nie"><label for="reg2" title="Nie będziesz mógł założyć konta"> nie </label>
                                         </div><br>
-                                        <div class="form-group space-before space-after"> <button type="submit" class="btn btn-lg btn-default">Zarejestruj</button> </div>
+                                        <div class="form-group space-after"> <button type="submit" class="btn btn-lg btn-default">Zarejestruj</button> </div>
 				</form>
 		</div>
 	</div>
-	<div class="col-lg-4 container space-before"></div>
+
+<div class="col-lg-4 container" style="background-color: #fae6dc; width: 30%; border-radius: 35px; margin-top: 2.5%;">
+    <br><p class="lead" align="center"> Status rejestracji </p>
+    {block name=messages}
+            {if $msgs->isMessage()}
+            <div class="messages bottom-margin" style="margin: 2%;">
+                    <ul>
+                    {foreach $msgs->getMessages() as $msg}
+                    {strip}
+                            <li class="msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">{$msg->text}</li>
+                    {/strip}
+                    {/foreach}
+                    </ul><br>
+            </div>
+            {/if}
+            {/block}
+</div>
+        
+        
+        
         <!-- /Features -->
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'"><a href="{$conf->action_root}info">INFO</a> - STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a> - <a href="{$conf->action_root}info">INFO</a> </i></p>
 </div>
         

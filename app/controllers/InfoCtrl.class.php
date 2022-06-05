@@ -4,15 +4,24 @@ namespace app\controllers;
 use core\App;
 use core\Message;
 use core\Utils;
+use core\SessionUtils;
+
 
 class InfoCtrl {
-    public function action_info() {        
-        $variable = 123;
+    private $logininfo;
+    
+    
+    public function action_info() {
         
-        App::getMessages()->addMessage(new Message("Hello world message", Message::INFO));
-        Utils::addInfoMessage("Or even easier message :-)");
         
-        App::getSmarty()->assign("value",$variable);        
-        App::getSmarty()->display("info.html");
-    }  
+        
+        $this->generateView(); 
+    }
+    
+    public function generateView() {
+        $tempinfo = SessionUtils::load("loginf",true);
+        $this->logininfo = $tempinfo;
+        App::getSmarty()->assign('logininfo', $this->logininfo);
+        App::getSmarty()->display('info.html');
+    }
 }

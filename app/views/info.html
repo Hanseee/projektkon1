@@ -30,7 +30,7 @@
             <div class="col-lg-4" align="center">
                 {if count($conf->roles)>0}
                 <a href="{$conf->action_root}logout"><button type="submit" class="btn btn-lg btn-outline-info">Wyloguj</button></a>
-                <a href="{$conf->action_root}myprofile"><button type="submit" class="btn btn-lg btn-outline-info">Twój profil</button></a>
+                <a href="{$conf->action_root}myprofile"><button type="submit" class="btn btn-lg btn-outline-info">{$logininfo}</button></a>
                 {else}
                 <a href="{$conf->action_root}login"><button type="submit" class="btn btn-lg btn-outline-info">Logowanie</button></a>
                 <a href="{$conf->action_root}register"><button type="submit" class="btn btn-lg btn-outline-info">Rejestracja</button></a>
@@ -152,7 +152,7 @@ By stary Dąbrowskiego usłyszeć mazurek.
 
     
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'">STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a></i>
     </p>
 </div>

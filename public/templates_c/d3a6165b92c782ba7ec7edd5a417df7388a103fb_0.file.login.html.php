@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-26 23:46:35
+/* Smarty version 4.1.0, created on 2022-05-31 00:54:37
   from 'C:\xampp\htdocs\final\app\views\login.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_628ff53b1f0c66_78749565',
+  'unifunc' => 'content_62954b2d33b6e5_28243524',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd3a6165b92c782ba7ec7edd5a417df7388a103fb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\final\\app\\views\\login.html',
-      1 => 1653601485,
+      1 => 1653951274,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_628ff53b1f0c66_78749565 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62954b2d33b6e5_28243524 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -102,12 +102,12 @@ register"><button type="submit" class="btn btn-lg btn-outline-info">Rejestracja<
         <div class="row w-75 col-lg-6 right" style="background-color: #fae6dc; width: 30%; border-radius: 35px; margin-top: 2.5%;">
         <br><p class="lead" align="center">Status logowania </p>
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_703753082628ff53b19b5c6_85337536', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_107997359562954b2d335235_95560488', 'messages');
 ?>
 
         </div>
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 info">INFO</a> - STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a> - <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 info">INFO</a> </i></p>
@@ -126,12 +126,12 @@ info">INFO</a> </i></p>
 </body>
 </html><?php }
 /* {block 'messages'} */
-class Block_703753082628ff53b19b5c6_85337536 extends Smarty_Internal_Block
+class Block_107997359562954b2d335235_95560488 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_703753082628ff53b19b5c6_85337536',
+    0 => 'Block_107997359562954b2d335235_95560488',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

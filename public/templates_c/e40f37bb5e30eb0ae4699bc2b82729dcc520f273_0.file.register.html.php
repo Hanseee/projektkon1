@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-26 23:46:35
+/* Smarty version 4.1.0, created on 2022-05-31 00:55:17
   from 'C:\xampp\htdocs\final\app\views\register.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_628ff53bbb6ce0_40531136',
+  'unifunc' => 'content_62954b55934a19_43849342',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e40f37bb5e30eb0ae4699bc2b82729dcc520f273' => 
     array (
       0 => 'C:\\xampp\\htdocs\\final\\app\\views\\register.html',
-      1 => 1653601474,
+      1 => 1653951316,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_628ff53bbb6ce0_40531136 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_62954b55934a19_43849342 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
+?>
+<!DOCTYPE html>
 <html lang="en" style="height: 100%">
 <head>
 	<meta charset="utf-8">
@@ -75,8 +78,8 @@ register"><button type="submit" class="btn btn-lg btn-outline-info">Rejestracja<
 				<h1>Rejestracja</h1>
 				<p class="lead">
 					Tutaj utworzysz nowe konto
-				</p>
-				<p class="small text-muted">Strona dopilnuje, żebyś nie oszukiwał</p>
+                                </p>
+                                <p class="small text-muted">Hasło musi mieć minimum 6 i maksimum 20 znaków</p>
 			</div>
 		</div>
 	</div>
@@ -89,27 +92,36 @@ register"><button type="submit" class="btn btn-lg btn-outline-info">Rejestracja<
                <p class="lead">Tutaj dane:</p>
 		<div class="featurelist text-center space-after">
                     <form class="form-inline" role="form">
-                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" id="name" placeholder="Nazwa użytkownika"></div><br>  
-					<div class="form-group space-after"><input type="text" class="form-control input-lg" id="pass" placeholder="Hasło"></div><br>  
-                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" id="pass2" placeholder="Powtórz hasło"></div><br>  
+                                        <div class="form-group space-after"><input type="text" class="form-control input-lg" name="login" id="id_login" placeholder="Nazwa użytkownika"></div><br>  
+					<div class="form-group space-after"><input type="password" class="form-control input-lg" name="pass" id="id_pass" placeholder="Hasło"></div><br>  
+                                        <div class="form-group space-after"><input type="password" class="form-control input-lg" name="pass2" id="id_pass2" placeholder="Powtórz hasło"></div><br>  
                                         <div class="form-group space-after">
-                                            <p>Rola:</p>
-                                            <input type="radio" id="reg1" name="role" value="user"><label for="reg1" title="Użytkownik może przeglądać firmy ale nie może tworzyć własnych."> Użytkownik </label>
-                                            <input type="radio" id="reg2" name="role" value="owner"><label for="reg2" title="Właściciel może przeglądać firmy oraz tworzyć własne, publiczne lub prywatne. Utworzenie konta właściciela wiąże się z opłatami."> Właściciel </label>
-                                        </div><br>
+                                                <label for="cars">Rola:</label><br>
+                                                <select name="role" id="role">
+                                                    <option value="user"> &nbsp; Użytkownik &nbsp; </option>
+                                                    <option value="owner"> &nbsp; Właściciel &nbsp; </option>
+                                                </select>
+                                        </div>
                                         <div class="form-group">
-                                            <p>Czy akceptujesz regulamin?:</p>
-                                            <input type="radio" id="reg1" name="reg" value="tak"><label for="reg1" title="Od przystąpienia do umowy nie ma odwrotu"> tak </label>
-                                            <input type="radio" id="reg2" name="reg" value="nie"><label for="reg2" title="Nie będziesz mógł założyć konta"> nie </label>
                                         </div><br>
-                                        <div class="form-group space-before space-after"> <button type="submit" class="btn btn-lg btn-default">Zarejestruj</button> </div>
+                                        <div class="form-group space-after"> <button type="submit" class="btn btn-lg btn-default">Zarejestruj</button> </div>
 				</form>
 		</div>
 	</div>
-	<div class="col-lg-4 container space-before"></div>
+
+<div class="col-lg-4 container" style="background-color: #fae6dc; width: 30%; border-radius: 35px; margin-top: 2.5%;">
+    <br><p class="lead" align="center"> Status rejestracji </p>
+    <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_96618164862954b5592d046_85612530', 'messages');
+?>
+
+</div>
+        
+        
+        
         <!-- /Features -->
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 info">INFO</a> - STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a> - <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 info">INFO</a> </i></p>
@@ -128,4 +140,37 @@ info">INFO</a> </i></p>
 
 </body>
 </html><?php }
+/* {block 'messages'} */
+class Block_96618164862954b5592d046_85612530 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'messages' => 
+  array (
+    0 => 'Block_96618164862954b5592d046_85612530',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+            <?php if ($_smarty_tpl->tpl_vars['msgs']->value->isMessage()) {?>
+            <div class="messages bottom-margin" style="margin: 2%;">
+                    <ul>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
+$_smarty_tpl->tpl_vars['msg']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
+$_smarty_tpl->tpl_vars['msg']->do_else = false;
+?>
+                    <li class="msg <?php if ($_smarty_tpl->tpl_vars['msg']->value->isError()) {?>error<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isWarning()) {?>warning<?php }?> <?php if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>info<?php }?>"><?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+</li>
+                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                    </ul><br>
+            </div>
+            <?php }?>
+            <?php
+}
+}
+/* {/block 'messages'} */
 }

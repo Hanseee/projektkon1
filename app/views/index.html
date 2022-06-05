@@ -26,13 +26,12 @@
             <div class="col-lg-4" align="center">
                 {if count($conf->roles)>0}
                 <a href="{$conf->action_root}logout"><button type="submit" class="btn btn-lg btn-outline-info">Wyloguj</button></a>
-                <a href="{$conf->action_root}myprofile"><button type="submit" class="btn btn-lg btn-outline-info">Twój profil</button></a>
+                <a href="{$conf->action_root}myprofile"><button type="submit" class="btn btn-lg btn-outline-info">{$logininfo}</button></a>
                 {else}
                 <a href="{$conf->action_root}login"><button type="submit" class="btn btn-lg btn-outline-info">Logowanie</button></a>
                 <a href="{$conf->action_root}register"><button type="submit" class="btn btn-lg btn-outline-info">Rejestracja</button></a>
                 {/if}
             </div>
-        
     </div>
 </div>
     
@@ -45,39 +44,76 @@
 					Znajdź firmę w naszej bazie danych
 				</p>
 				<form class="form-inline" role="form">
-				<div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Nazwa"></div>
-				<div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Właściciel"></div>
-                                <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Kod firmy"></div>  
+				<div class="form-group"><input type="text" class="form-control input-lg" name="name" id="name" placeholder="Nazwa"></div>
+				<div class="form-group"><input type="text" class="form-control input-lg" name="field" id="field" placeholder="Branża"></div>
+                                <div class="form-group"><input type="text" class="form-control input-lg" name="kod" id="kod" placeholder="Kod firmy"></div>  
                                 <br>
                                 <div class="form-group space-before"> <button type="submit" class="btn btn-lg btn-default">Szukaj</button> </div>
 				</form>
-				<p class="small text-muted" style="margin: 2em 1em 2em 1em">Musisz być zalogowany żeby widzieć firmy. Tylko właściciele widzą prywatne firmy</p>
+                                {if count($conf->roles)>0}
+				<p class="small text-muted" style="margin: 2em 1em 2em 1em">Jesteś zalogowany. Case sensitive. </p>
+                                {else}
+                                <p class="small text-muted" style="margin: 2em 1em 2em 1em">Musisz być zalogowany żeby widzieć firmy. Tylko właściciel widzi swoje prywatne firmy. </p>
+                                {/if}
 			</div>
 		</div>
 	</div>
 </header>
 <main class="content">
-
-<section class="container space-before space-after">
-    <div class="row">
-	<div class="col-sm-10 col-sm-push-1">
-	<h1 class="text-center">Kontekst</h1>
-	<p class="lead text-center">
-	... default pusto, wyniki
-	</p> 
-        </div>
+<div class="col-lg-4"></div>
+{if count($conf->roles)>0}
+<div class="col-lg-4" style="text-align: center; align: center;">
+	<div class="bottom-margin" style="margin: 2%; text-align: center;">
+            <p class="lead">Wyniki wyszukiwania: </p>
+            <table id="tab_firmy" class="pure-table  pure-table-bordered" style="table-layout: fixed; width: 100%;">
+        <thead>
+	<tr>
+		<th>Kod:</th>
+		<th>Nazwa:</th>
+                <th>Data założenia:</th>
+		<th>Branża:</th>
+		<th>Aktywna:</th>
+	</tr>
+        </thead>  
+        <tbody>{foreach $firmylista as $fl}
+        {strip}
+	<tr> 
+		<td>{$fl["FIRMA_ID"]}</td>
+		<td>{$fl["FIRMA_NAME"]}</td>
+                <td>{$fl["FIRMA_DZ"]}</td>
+                <td>{$fl["FIRMA_FIELD"]}</td>
+                <td>{if $fl["FIRMA_AKTYW"] == 0}tak{else}nie{/if}</td>
+        </tr>
+        {/strip}{/foreach}</tbody></table></div>
+    
+    {block name=messages}
+            {if $msgs->isMessage()}
+            <div class="messages bottom-margin" style="margin: 2%;">
+                    <ul>
+                    {foreach $msgs->getMessages() as $msg}
+                    {strip}
+                            <li class="msg {if $msg->isError()}error{/if} {if $msg->isWarning()}warning{/if} {if $msg->isInfo()}info{/if}">{$msg->text}</li>
+                    {/strip}
+                    {/foreach}
+                    </ul><br>
+            </div>
+            {/if}
+            {/block}
+    
 </div>
-</section>
-
-	<!-- Features -->
-	<section class="container space-before">
-		<div class="row featurelist space-after">
-			
-		</div>
-	</section>
-	<!-- /Features -->
+{else}
+<section class="container space-before space-after">
+    <div class="col-lg-4"></div>
+	<div class="col-sm-10 col-sm-push-1">
+	<h1 class="text-center">Wyniki dostępne po zalogowaniu</h1>
+	<p class="lead text-center">
+	Quo vadis domine?
+	</p></div>
+    </div>
+</section>{/if}<div class="col-lg-4"></div>
+        
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'"><a href="{$conf->action_root}info">INFO</a> - STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a> - <a href="{$conf->action_root}info">INFO</a> </i>
     </p>
 </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-26 23:00:53
+/* Smarty version 4.1.0, created on 2022-05-29 22:19:34
   from 'C:\xampp\htdocs\final\app\views\info.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_628fea8548baa2_25059975',
+  'unifunc' => 'content_6293d556a5b430_88529020',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a57de38d3b3e90102997e60656d2be88817098a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\final\\app\\views\\info.html',
-      1 => 1653593106,
+      1 => 1653855540,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_628fea8548baa2_25059975 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6293d556a5b430_88529020 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en" style="height: 100%">
 <head>
@@ -57,7 +57,8 @@ index"><img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 logout"><button type="submit" class="btn btn-lg btn-outline-info">Wyloguj</button></a>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-myprofile"><button type="submit" class="btn btn-lg btn-outline-info">nazwauż</button></a>
+myprofile"><button type="submit" class="btn btn-lg btn-outline-info"><?php echo $_smarty_tpl->tpl_vars['logininfo']->value;?>
+</button></a>
                 <?php } else { ?>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 login"><button type="submit" class="btn btn-lg btn-outline-info">Logowanie</button></a>
@@ -181,7 +182,7 @@ By stary Dąbrowskiego usłyszeć mazurek.
 
     
 <div class="fixed-bottom static default-color" style="position: fixed; height: 20px; bottom: 0; width: 100%; background-color: #ffcdc3">
-    <p class="text-center small">
+    <p class="small text-muted text-center small">
         <i style="font-family:'Open sans'">STOPKA - PROJEKT OPARTY NA DARMOWYM WIDOKU Z WITRYNY <a href=" https://gettemplate.com/">GETTEMPLATE.COM</a> ORAZ PROJTKU Z WITRYNY <a href=" https://kudlacik.eu/">KUDLACIK.EU</a></i>
     </p>
 </div>

@@ -21,7 +21,6 @@ use core\SessionUtils;
 class MyprofileCtrl {
     private $logininfo;
     private $roleinfo;
-    private $records;
     public function __construct() {
         $this->form = new MyProfileForm();
     }
@@ -34,8 +33,7 @@ class MyprofileCtrl {
         $this->form->aktyw = ParamUtils::getFromRequest('firmaaktyw');
         $this->form->priv = ParamUtils::getFromRequest('firmapriv');
         $this->form->info = ParamUtils::getFromRequest('firmainfo');
-        if (!isset($this->form->name))
-            return false;
+        
         if (empty($this->form->name)) {
             Utils::addErrorMessage('Nie podałeś nazwy');
         }
@@ -58,6 +56,12 @@ class MyprofileCtrl {
         return !App::getMessages()->isError();
     }    
     
+        
+    public function action_myprofile() {
+    $this->tempInfo();
+    //if ($this->roleinfo == 'Właściciel' && ParamUtils::getFromRequest('firmaname') == NULL){$this->action_nowafirma();} 
+    //$this->generateView();
+    }
     
     public function tempInfo() {
     $this->logininfo = SessionUtils::load("loginf",true);
@@ -73,21 +77,12 @@ class MyprofileCtrl {
     $this->roleinfo = $rola;  
     }
     
+    
     public function action_mojefirmy() {
-        $localuserid = App::getDB()->get("users","USER_ID",["USER_NAME"=>$this->logininfo]);  
-        $localownerid = App::getDB()->get("owners","OWNER_ID",["USER_ID"=>$localuserid]);
-        $this->records = App::getDB()->select("firmy", [
-                "FIRMA_ID",
-                "FIRMA_NAME",
-                "FIRMA_DZ",
-                "FIRMA_FIELD",
-                "FIRMA_AKTYW",
-                "FIRMA_PRIV"
-                ], ["FIRMA_OWNER_ID"=>$localownerid]);
-        Utils::addErrorMessage($localownerid);
+    
     }
     
-    public function action_myprofile() {
+    public function action_nowafirma() {
         $this->tempInfo();
         if ($this->validate()) {
             //tutaj wyciągam owner ID użytkownika
@@ -106,36 +101,16 @@ class MyprofileCtrl {
                     "FIRMA_FIELD" => $this->form->info
             ]); 
            Utils::addErrorMessage('Utworzono firmę');
-           
-           $this->records = App::getDB()->select("firmy", [
-                "FIRMA_ID",
-                "FIRMA_NAME",
-                "FIRMA_DZ",
-                "FIRMA_FIELD",
-                "FIRMA_AKTYW",
-                "FIRMA_PRIV"
-                ], ["FIRMA_OWNER_ID"=>$localownerid]);
            $this->generateView();
         }
         else {
-        $localuserid = App::getDB()->get("users","USER_ID",["USER_NAME"=>$this->logininfo]);  
-        $localownerid = App::getDB()->get("owners","OWNER_ID",["USER_ID"=>$localuserid]);   
-        $this->records = App::getDB()->select("firmy", [
-                "FIRMA_ID",
-                "FIRMA_NAME",
-                "FIRMA_DZ",
-                "FIRMA_FIELD",
-                "FIRMA_AKTYW",
-                "FIRMA_PRIV"
-                ], ["FIRMA_OWNER_ID"=>$localownerid]);
-           $this->generateView();
+            $this->generateView();
         }    
     }
     
     public function generateView() {
         App::getSmarty()->assign('logininfo', $this->logininfo);
         App::getSmarty()->assign('roleinfo', $this->roleinfo);
-        App::getSmarty()->assign('firmylista', $this->records);
         App::getSmarty()->assign('form', $this->form);
         App::getSmarty()->display('myprofile.html');
     }

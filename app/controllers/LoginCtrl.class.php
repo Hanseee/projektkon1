@@ -7,16 +7,17 @@ use core\Utils;
 use core\RoleUtils;
 use core\ParamUtils;
 use app\forms\LoginForm;
+use core\SessionUtils;
+
 
 class LoginCtrl {
-
     private $form;
 
     public function __construct() {
         //stworzenie potrzebnych obiektów
         $this->form = new LoginForm();
     }
-
+    
     public function validate() {
         //wyłącza warningi
         error_reporting(E_ALL ^ E_WARNING);   
@@ -38,21 +39,19 @@ class LoginCtrl {
         
         $login = $this->form->login;
         $password = $this->form->pass;
-        //dane z bazy, porównanie
+        
+        //Dane z bazy, porównanie
         $record = App::getDB()->get("users","*",["USER_NAME"=>$login]);
         if ($record == NULL){Utils::addErrorMessage('Nie ma użytkownika ' . $login . ' w bazie danych');}  //przykłąd dodawania wartości php w środku stringa
         else if ($password != $record['USER_PASS']){
             Utils::addErrorMessage('Niepoprawne hasło');
         }
         
-        
         // DODANIE ROLI W ZALEŻNOŚCI OD ROLI W DB
-      
         if ($record["USER_ROLE"]=='normal'){RoleUtils::addRole('normal');}
         if ($record["USER_ROLE"]=='user'){RoleUtils::addRole('user');}
         if ($record["USER_ROLE"]=='owner'){RoleUtils::addRole('owner');}   
         if ($record["USER_ROLE"]=='admin'){RoleUtils::addRole('admin');}
-        
         return !App::getMessages()->isError();
     }
 
@@ -62,11 +61,11 @@ class LoginCtrl {
 
     public function action_login() {
         if ($this->validate()) {
-            //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
-            Utils::addErrorMessage('Poprawnie zalogowano do systemu');
+            //po walidacji = zalogowany = przchodzi do indexu z parametrami
+            SessionUtils::store("loginf", $this->form->login);
             App::getRouter()->redirectTo("index");
         } else {
-            //niezalogowany => pozostań na stronie logowania
+            //brak walidacji = brak zalogowania = pozostajesz na stronie logownaia z errorami
             $this->generateView();
         }
     }

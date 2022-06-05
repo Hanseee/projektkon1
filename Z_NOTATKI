@@ -1,28 +1,5 @@
-NA REJ SPRAWDZA CZY ISTNIJE JUŻ UŻYTKOWNIK 
 
-W MYPROFILE OPCJA DODANIA FIRMY DLA ZAREJESTROWANYCH Z ROLĄ 'WŁAŚCICIEL'
 
-PRZY KAŻDEJ AKCJI SPRAWDZA ROLE Z ROUTERA. JEŚLI NIE SPEŁNIA ROLI DAJE:
-a) ALERT - NIE SPELNIA ROLI - OK - 
-b) ALERT - KONIECZNE LOGOWANIE - OK - STRONA LOGOWANIA LINK
-W PHP/ROUTINGU DEFAULT ROLE USER TO 'GUEST'
-
-db: bazaprojekt
-
-if html
-    <div class="pure-menu pure-menu-horizontal bottom-margin">
-            <a href="{$conf->action_root}personList" class="pure-menu-heading pure-menu-link">Lista</a>
-    {if count($conf->roles)>0}
-            <a href="{$conf->action_root}logout" class="pure-menu-heading pure-menu-link">Wyloguj</a>
-    {else}	
-            <a href="{$conf->action_root}loginShow" class="pure-menu-heading pure-menu-link">Zaloguj</a>
-    {/if}
-    </div>
-
-trzeba zmienić w login ctrl class z zfixowanych wartości na zapytanie do bazy
-
-w forms są wszystkie pola z danej strony, tj:
-na logowaniu - login/hasło
-na rej - login/hasło/hasło2/etc.
-
-Dwa warunki - ["AND" => ["USER_ID"=>$login, "USER_NAME"=>$login]]); - https://medoo.in/api/where
+można:
+dodać opcję usuwania do myprofile
+DODAĆ LIMIT PRZED WHERE WYNIKI

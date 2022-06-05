@@ -3,10 +3,10 @@
 use core\App;
 use core\Utils;
 
-App::getRouter()->setDefaultRoute('hello'); #default action
+App::getRouter()->setDefaultRoute('index'); #default action
 App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
-Utils::addRoute('hello', 'HelloCtrl');  //pierwsza wartość to wywołanie podklasy z drugiej wartości
+Utils::addRoute('index', 'IndexCtrl');  //pierwsza wartość to wywołanie podklasy z drugiej wartości
 Utils::addRoute('info', 'InfoCtrl');
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl');
