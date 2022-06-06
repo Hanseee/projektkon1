@@ -22,6 +22,7 @@ class MyprofileCtrl {
     private $logininfo;
     private $roleinfo;
     private $records;
+    
     public function __construct() {
         $this->form = new MyProfileForm();
     }
@@ -73,7 +74,18 @@ class MyprofileCtrl {
     $this->roleinfo = $rola;  
     }
     
-    public function action_mojefirmy() {
+    public function action_usunfirmy() {
+        $localuserid = App::getDB()->get("users","USER_ID",["USER_NAME"=>$this->logininfo]);
+        $localownerid = App::getDB()->get("owners","OWNER_ID",["USER_ID"=>$localuserid]);
+        $this->form->firmausun = ParamUtils::getFromRequest('firmausun');               //boilerplate ale tak musi być
+        if (App::getDB()->get("firmy","FIRMA_OWNER_ID",["FIRMA_NAME"=>$this->form->firmausun]) == $localownerid){
+            App::getDB()->delete("firmy", [
+                    "FIRMA_NAME"=>$this->form->firmausun
+                ]);
+        } else {Utils::addErrorMessage('To nie jest twoja firma.');}
+    }
+    
+    /*public function action_mojefirmy() {           // nieaktualne, może się potem przydać
         $localuserid = App::getDB()->get("users","USER_ID",["USER_NAME"=>$this->logininfo]);  
         $localownerid = App::getDB()->get("owners","OWNER_ID",["USER_ID"=>$localuserid]);
         $this->records = App::getDB()->select("firmy", [
@@ -85,10 +97,12 @@ class MyprofileCtrl {
                 "FIRMA_PRIV"
                 ], ["FIRMA_OWNER_ID"=>$localownerid]);
         Utils::addErrorMessage($localownerid);
-    }
+    }*/
     
     public function action_myprofile() {
         $this->tempInfo();
+        $this->form->firmausun = ParamUtils::getFromRequest('firmausun');
+        if (isset($this->form->firmausun)){$this->action_usunfirmy();}
         if ($this->validate()) {
             //tutaj wyciągam owner ID użytkownika
            $localuserid = App::getDB()->get("users","USER_ID",["USER_NAME"=>$this->logininfo]);  
@@ -140,5 +154,3 @@ class MyprofileCtrl {
         App::getSmarty()->display('myprofile.html');
     }
 }
-
-//  if ($this->roleinfo == 'Właściciel'){$this->action_mojefirmy(); $this->action_nowafirma();} 

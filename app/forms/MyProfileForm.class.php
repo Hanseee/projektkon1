@@ -7,4 +7,5 @@ class MyProfileForm {
         public $firmaaktyw;
         public $firmapriv;
         public $firmainfo;
+        public $firmausun;
 }

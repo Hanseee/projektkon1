@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-03 00:43:44
+/* Smarty version 4.1.0, created on 2022-06-06 21:32:33
   from 'C:\xampp\htdocs\final\app\views\myprofile.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_62993d20169a43_15393662',
+  'unifunc' => 'content_629e565191f660_30600878',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '798eb97fbd5d236a273595f9eeba81543bde492c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\final\\app\\views\\myprofile.html',
-      1 => 1654209822,
+      1 => 1654543952,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62993d20169a43_15393662 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629e565191f660_30600878 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -132,16 +132,24 @@ $_smarty_tpl->tpl_vars['fl']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></tbody></table></div><?php } else { ?>
         <p align="center" class="small text-muted space-before"> Nie jesteś właścicielem żadnej firmy</p>
         <?php }?>
+        <div align="center">
+        <form class="form-inline space-before" role="form">
+        <input type="text" class="form-control input-md" id="id_firmausun" name="firmausun" placeholder="Nazwa firmy">    
+        <button type="submit" class="btn btn-lg btn-default" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+usunfirmy/firmausun">Usuń</button>
+        </form></div>
+        
+        
     </div>
 </div>
 
 <div class="col-lg-3 space-after">
     <div class="row center" style="background-color: #fae6dc; border-radius: 35px; margin-top: 2.5%; width: 100%;">
-    <p class="lead" align="center" style="margin-top: 5%; margin-bottom: 5%;"> Nowa firma: </p>
+    <p class="lead" align="center" style="margin-top: 5%; margin-bottom: 5%;"> Nowa firma (bez polskich znaków): </p>
         <div class="featurelist bottom-margin text-center" style="margin: 2%; margin-bottom: 5%;">
         <form class="form-inline" role="form">
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5202821562993d20166246_81536004', 'messages');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1138038249629e565191c1f8_29976510', 'messages');
 ?>
 
                 <div class="form-group space-after"><input type="text" class="form-control input-lg" name="firmaname" id="firmaname" placeholder="Nazwa firmy"></div><br>  
@@ -184,12 +192,12 @@ info">INFO</a> </i></p>
 </body>
 </html><?php }
 /* {block 'messages'} */
-class Block_5202821562993d20166246_81536004 extends Smarty_Internal_Block
+class Block_1138038249629e565191c1f8_29976510 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'messages' => 
   array (
-    0 => 'Block_5202821562993d20166246_81536004',
+    0 => 'Block_1138038249629e565191c1f8_29976510',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

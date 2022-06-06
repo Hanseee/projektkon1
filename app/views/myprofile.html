@@ -95,12 +95,19 @@
         {/strip}{/foreach}</tbody></table></div>{else}
         <p align="center" class="small text-muted space-before"> Nie jesteś właścicielem żadnej firmy</p>
         {/if}
+        <div align="center">
+        <form class="form-inline space-before" role="form">
+        <input type="text" class="form-control input-md" id="id_firmausun" name="firmausun" placeholder="Nazwa firmy">    
+        <button type="submit" class="btn btn-lg btn-default" href="{$conf->action_url}usunfirmy/firmausun">Usuń</button>
+        </form></div>
+        
+        
     </div>
 </div>
 
 <div class="col-lg-3 space-after">
     <div class="row center" style="background-color: #fae6dc; border-radius: 35px; margin-top: 2.5%; width: 100%;">
-    <p class="lead" align="center" style="margin-top: 5%; margin-bottom: 5%;"> Nowa firma: </p>
+    <p class="lead" align="center" style="margin-top: 5%; margin-bottom: 5%;"> Nowa firma (bez polskich znaków): </p>
         <div class="featurelist bottom-margin text-center" style="margin: 2%; margin-bottom: 5%;">
         <form class="form-inline" role="form">
             {block name=messages}

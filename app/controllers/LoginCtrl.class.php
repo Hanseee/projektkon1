@@ -50,7 +50,10 @@ class LoginCtrl {
         // DODANIE ROLI W ZALEŻNOŚCI OD ROLI W DB
         if ($record["USER_ROLE"]=='normal'){RoleUtils::addRole('normal');}
         if ($record["USER_ROLE"]=='user'){RoleUtils::addRole('user');}
-        if ($record["USER_ROLE"]=='owner'){RoleUtils::addRole('owner');}   
+        if ($record["USER_ROLE"]=='owner'){RoleUtils::addRole('owner');
+        
+        
+        }   
         if ($record["USER_ROLE"]=='admin'){RoleUtils::addRole('admin');}
         return !App::getMessages()->isError();
     }
